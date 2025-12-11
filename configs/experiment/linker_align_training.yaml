@@ -1,0 +1,53 @@
+# @package _global_
+general: 
+    name : zinc_with_h_fragment_linker
+    gpus : 2
+    wandb: 'disabled'
+    evaluate_all_checkpoints: False
+    num_final_sampling: 1
+    check_val_every_n_epochs: 5
+    sample_every_val: 2
+    samples_to_generate: 20
+    # test_only: /Dataset/ckpt/Diffph4-AllH/Idea.ckpt
+
+
+train:
+    n_epochs: 300
+    batch_size: 320
+    reference_batch_size: 250
+    save_model: True
+    lr: 0.0002
+model:
+    n_layers: 12
+    lambda_train: [ 3, 0.4, 1, 2, 0 ]
+    hidden_mlp_dims: { 'X': 256, 'E': 64, 'y': 256, 'pos': 64 }
+    hidden_dims: { 'dx': 256, 'de': 64, 'dy': 128, 'n_head': 8, 'dim_ffX': 256, 'dim_ffE': 64, 'dim_ffy': 256 }
+    nu:
+      p: 2
+      x: 1
+      c: 1
+      e: 1.5
+      y: 1
+    condition_control: True
+    pretrained_model_path: ./checkpoints/pre-trained/midi_zinc_h_epoch=1719.ckpt
+    guess_mode: False
+    strength: 1
+    unconditional_guidance_scale: 9
+    add_gru_output_model: False
+    dropout_rate: 0
+    noise_std: 0.3
+
+
+dataset:
+    name: zinc
+    datadir : /data/bhli/Dataset/zinc
+    remove_h: False
+    random_subset: null
+    pin_memory: False
+    adaptive_loader: True
+    linker_strategy: 'fragment'
+    control_add_noise_dict: { 'cX': True, 'cE': True, 'cpos': True}
+
+
+
+

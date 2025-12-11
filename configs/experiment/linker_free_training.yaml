@@ -1,0 +1,55 @@
+# @package _global_
+general: 
+    name : diffpharm-zinc_no_h_cluster_fragment
+    gpus : 2
+    wandb: 'disabled'
+    evaluate_all_checkpoints: False
+    num_final_sampling: 1
+    check_val_every_n_epochs: 5
+    sample_every_val: 2
+    samples_to_generate: 20
+
+
+train:
+    n_epochs: 300
+    batch_size: 320
+    reference_batch_size: 250
+    save_model: True
+    lr: 0.0002
+model:
+    n_layers: 12
+    # lambda_train: [ 3, 0.4, 1, 2, 0 ]
+    lambda_train: [ 1, 2, 1, 2, 0 ]
+    hidden_mlp_dims: { 'X': 256, 'E': 128, 'y': 128, 'pos': 64 }
+    hidden_dims: { 'dx': 256, 'de': 64, 'dy': 128, 'n_head': 8, 'dim_ffX': 256, 'dim_ffE': 128, 'dim_ffy': 256 }
+    nu:
+      p: 2.5
+      x: 1
+      c: 1
+      e: 1.5
+      y: 1
+    condition_control: True
+    pretrained_model_path: ./checkpoints/pre-trained/midi_zinc_noh_epoch=1099.ckpt
+    guess_mode: False
+    strength: 1
+    unconditional_guidance_scale: 9
+    add_gru_output_model: False
+    dropout_rate: 0
+    noise_std: 0.3
+
+
+dataset:
+    name: zinc
+    datadir : /Dataset/zinc
+    remove_h: True
+    random_subset: null
+    pin_memory: False
+    adaptive_loader: True
+    linker_strategy: 'cluster'
+#    control_data_dict: { 'cX': 'cX', 'cE': 'single_mask_None', 'cpos': 'cpos' }
+    control_add_noise_dict: { 'cX': True, 'cE': True, 'cpos': True}
+    # template_name: 6r8o
+
+
+
+

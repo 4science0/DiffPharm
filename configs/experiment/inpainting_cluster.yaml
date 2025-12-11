@@ -1,0 +1,27 @@
+# @package _global_
+general:
+    name : 'diffpharm-cluster-8azz' 
+sample:
+    loading_model: ./checkpoints/diffpharm/LinkerCluster_noh_nstd0.3_16t.ckpt
+    sdf_path: /TASK/mol_sdfs/8azz_prep.sdf
+    pt_path: /gen/Molecular pharmacophore results/8azz/template_cluster-L-noh.pt
+    fix_atoms: [0, 1, 2, 13, 20, 21, 25, 28, 29]
+    saturated_atoms: [0, 1, 2, 13, 25]
+    statistics_path: statistics_info/linker_free
+    samples_to_generate: 50000
+    potential_ebs: 1400
+    resamplings: 1
+
+dataset:
+    remove_h: True
+    control_add_noise_dict: { 'cX': True, 'cE': True, 'cpos': True}
+
+
+
+    
+
+
+
+
+
+

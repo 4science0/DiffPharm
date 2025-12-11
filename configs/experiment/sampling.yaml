@@ -1,0 +1,20 @@
+# @package _global_
+general:
+    name : diffpharm-8azz-demo
+sample:
+    loading_model: ./checkpoints/diffpharm/LinkerCluster_noh_nstd0.3_16t.ckpt
+    samples_to_generate: 10000
+    potential_ebs: 500
+    phar_model_file: /TASK/diffph4-cases/from_phase/8azz.json
+    statistics_path: /statistics_info/linker_free
+    based_on_template: normal    # [copy, normal, skewness]
+    filter_substructure: /midi/metrics/default_filter_structure.json
+    resamplings: 1
+    
+
+dataset:
+    remove_h: True
+
+
+
+

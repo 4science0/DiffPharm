@@ -1,0 +1,27 @@
+# @package _global_
+general:
+    name : 'diffpharm-fragment-8d76' 
+sample:
+    loading_model: ./checkpoints/diffpharm/LinkerFagment_withh_nstd0.3_16t.ckpt 
+    sdf_path: /TASK/mol_sdfs/8d76-ligand-m2_cen.sdf
+    pt_path: /gen/Molecular pharmacophore results/8D76-m2/template_fragment-L-h-p1.pt
+    fix_atoms: [0, 1, 2, 27, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43, 59, 60, 61, 62, 63, 64, 65, 66, 68, 69, 70, 71]
+    saturated_atoms: null
+    statistics_path: statistics_info/linker_align
+    samples_to_generate: 21000
+    potential_ebs: 300
+    resamplings: 1
+
+dataset:
+    remove_h: False
+    control_add_noise_dict: { 'cX': True, 'cE': True, 'cpos': True}
+
+
+
+    
+
+
+
+
+
+

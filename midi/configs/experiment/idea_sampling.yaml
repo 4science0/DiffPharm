@@ -1,0 +1,31 @@
+# @package _global_
+general:
+    name : 'IDEA-5olh' 
+sample:
+    loading_model: '/data/lbh/Dataset/ckpt/Diffph4-AllH/Idea.ckpt'
+    # loading_model: '/data/lbh/Code/DeepShape/midi/ckpts/native-mask-onehot.ckpt'
+    samples_to_generate: 200
+    potential_ebs: 300
+    phar_model_file: '/data/lbh/Code/DeepShape/TASK/diffph4-cases/application/5olh-ph4 model-IDEA.json'
+    mode: 'single'
+    based_on_template: normal    # [copy, normal]
+    phar_sup: False
+    filter_substructure: '/data/lbh/Code/DeepShape/midi/metrics/default_filter_structure.json'
+model:
+    guess_mode: False
+
+dataset:
+    name: 'drugs_geom'
+    datadir : '/data/lbh/Dataset/geom_drugs/chembl_data/For-phar-noH/drugs'
+    remove_h: True
+    random_subset: null
+    pin_memory: False
+    adaptive_loader: True
+    control_data_dict: { 'cX': 'cX', 'cE': 'cE', 'cpos': 'cpos' }
+#    control_data_dict: { 'cX': 'cX', 'cE': 'single_mask_None', 'cpos': 'cpos' }
+    control_add_noise_dict: { 'cX': True, 'cE': True, 'cpos': True}
+#    template_name: 3rlr
+
+
+
+
